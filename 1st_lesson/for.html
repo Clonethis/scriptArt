@@ -1,0 +1,53 @@
+<html>
+
+    <body>
+        <canvas height="1000"
+            width="1000"></canvas>
+        <script>
+            const artists = ['Slipknot', 'System of a Down', 'Mettalica', 'Skrillex', 'RedZed', 'Linkin Park'];
+            const listArtists = (artists) => {
+
+                for (artist in artists) {
+                    console.log(artists[artist]);
+                };
+            }
+            listArtists(artists);
+            let canvas = document.querySelector('canvas');
+            let context = canvas.getContext('2d');
+            let x = 40;
+            let y = 40;
+            let defWidth = 20;
+            let defHeight = 20;
+            let space = 30;
+            let numberOfIteration = 20
+            let insides = 4;
+            let insidesStroke = 8;
+            for (let i = 0; i <= numberOfIteration; i++) {
+                for (let j = 0; j <= numberOfIteration; j++) {
+                    //  if (j > 0 && j < numberOfIteration && j % 2 && i % 2)
+                    if (Math.random() > 0.5) {
+                        context.beginPath();
+                        context.rect(x + j * space + insides / 2, y + i * space + insides / 2, defWidth - insides, defHeight - insides);
+                        context.strokeStyle = 'red';
+                        context.lineWidth = insidesStroke;
+                        context.stroke();
+                    }
+                    if (Math.random() < 0.3) {
+                        context.beginPath();
+                        context.rect(x + j * space + insides / 2, y + i * space + insides / 2, defWidth - insides, defHeight - insides);
+                        context.strokeStyle = 'black';
+                        context.lineWidth = insidesStroke;
+                        context.stroke();
+                    }
+                    context.beginPath();
+                    context.rect(x + j * space, y + i * space, defWidth, defHeight);
+                    context.strokeStyle = 'black';
+                    context.lineWidth = 3;
+                    context.stroke();
+                }
+            }
+
+        </script>
+    </body>
+
+</html>

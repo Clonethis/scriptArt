@@ -1,0 +1,60 @@
+<html>
+
+    <body>
+        <canvas height="1000"
+            width="1000"></canvas>
+        <script>
+            let highlite = '#F6E851';
+            let highlite2 = '#759AAB';
+            let darkerHighlite = '#E9D60C';
+            let background1 = "#453F78";
+            let background2 = "#401F3E";
+            let canvas = document.querySelector('canvas');
+            console.log(canvas);
+            // canvas now behaves as 2D not 3D :D
+            let context = canvas.getContext('2d');
+            // changing color -> this is PROPERTY
+            context.fillStyle = background1;
+            // first two assigns where the rectangle is and last two sets value for inner square -> 'width' & 'height'
+            // fillRect -> is three steps in one command - 'beginPath';'rect'-> 'fill'|'stroke'
+            context.fillRect(0, 0, 700, 800)
+            context.strokeStyle = darkerHighlite;
+            context.lineWidth = 3;
+
+            for (let i = 0; i < 10; i++) {
+
+                context.beginPath();
+                context.rect(30 + i * 30, 30 + i * 30, 300, 300);
+                context.strokeStyle = 'grey'
+                context.stroke();
+            }
+            // for (let i = 0; i < 20; i++) {
+            //     context.beginPath();
+            //     context.rect(30 + i * 20, 200, 400, 400);
+            //     // contex.strokeStyle = highlite;
+            //     context.lineWidth = 8;
+            //     context.strokeStyle = highlite2;
+            //     context.stroke();
+            // }
+            for (let i = 0; i < 10; i++) {
+                context.beginPath();
+                console.log('circle is running', i);
+                // takes 6 parameters 'x'&'y' &'radius' 'starting angle'-angles are in radians- 'ending angle' , 'counter clockwise'
+                context.arc(300, 280, i * 20, i * 10, 2 * Math.PI + i * 0.2);
+                context.strokeStyle = highlite;
+                context.lineWidth = 8;
+                context.stroke();
+
+            }
+            // now draw circle
+            context.beginPath();
+            // takes 6 parameters 'x'&'y' &'radius' 'starting angle'-angles are in radians- 'ending angle' , 'counter clockwise'
+            context.arc(300, 280, 100, 0, Math.PI * 7 / 6, 0);
+            context.strokeStyle = highlite2;
+            context.lineWidth = 8;
+            context.stroke();
+
+        </script>
+    </body>
+
+</html>
